@@ -1,18 +1,18 @@
 {% set name = "coin-or-cgl" %}
-{% set version = "0.60.3" %}
+{% set version = "0.60.4" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-    url: https://github.com/coin-or/Cgl/archive/releases/{{ version }}.tar.gz
-    sha256: cfeeedd68feab7c0ce377eb9c7b61715120478f12c4dd0064b05ad640e20f3fb
-    patches:
-       - 0001-Patch-for-downstream.patch
+  url: https://github.com/coin-or/Cgl/archive/releases/{{ version }}.tar.gz
+  sha256: 57db498a0b7e1f3614ca061a93b23dc7e65017f092457c7366fa7d78397b5657
+  patches:
+    - 0001-Patch-for-downstream.patch
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage(name, min_pin='x.x', max_pin='x.x') }}
@@ -52,7 +52,7 @@ about:
   license: EPL-2.0
   license_family: OTHER
   license_file: LICENSE
-  summary: 'COIN-OR Cut Generation Library (Cgl)'
+  summary: COIN-OR Cut Generation Library (Cgl)
   description: |
     The COIN-OR Cut Generation Library (Cgl) is a collection of cut generators
     that can be used with other COIN-OR packages that make use of cuts, such as,
