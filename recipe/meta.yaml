@@ -1,5 +1,5 @@
 {% set name = "coin-or-cgl" %}
-{% set version = "0.60.7" %}
+{% set version = "0.60.9" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/coin-or/Cgl/archive/releases/{{ version }}.tar.gz
-  sha256: 93b30a80b5d2880c2e72d5877c64bdeaf4d7c1928b3194ea2f88b1aa4517fb1b
+  sha256: 558421ccd6aa91d6922dd1baa04e37aa4c75ba0472118dc11779e5d6a19bfb38
   patches:
     - 0001-Patch-for-downstream.patch
 
@@ -21,6 +21,7 @@ requirements:
   build:
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - pkg-config
     - make  # [unix]
