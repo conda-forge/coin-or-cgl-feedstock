@@ -12,33 +12,38 @@ source:
     - 0001-Patch-for-downstream.patch
 
 build:
-  number: 0
-  skip: true  # [win]
+  number: 1
   run_exports:
     - {{ pin_subpackage(name, min_pin='x.x', max_pin='x.x') }}
+    - mkl-static  # [win]
 
 requirements:
   build:
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
-    - {{ stdlib("c") }}
+    - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
-    - pkg-config
+    - {{ compiler('fortran') }}  # [unix]
+    - pkg-config  # [unix]
     - make  # [unix]
+    - m2-make  # [win]
+    - m2-pkg-config  # [win]
+    - m2-grep  # [win]
+    - m2-sed  # [win]
+    - m2-bash  # [win]
+    - m2-base  # [win]
   host:
     - coin-or-utils
     - coin-or-osi
     - coin-or-clp
-    - libblas
+    - blas-devel
+    - libblas  # [unix]
     - libcblas
     - liblapack
+    - liblapacke  # [unix]
+    - mkl-static  # [win]
     - zlib
     - bzip2
-    - ncurses
-    - readline
-  run:
-    - ncurses
-    - readline
   run_constrained:
     - coincbc * *_metapackage
 
