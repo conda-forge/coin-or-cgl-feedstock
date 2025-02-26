@@ -49,8 +49,10 @@ requirements:
 
 test:
   commands:
-    - test -f $PREFIX/lib/libCgl${SHLIB_EXT}
-    - test -f $PREFIX/include/coin/CglAllDifferent.hpp
+    - test -f $PREFIX/lib/libCgl${SHLIB_EXT}                     # [unix]
+    - test -f $PREFIX/include/coin/CglAllDifferent.hpp           # [unix]
+    - if not exist %LIBRARY_LIB%/libCgl.lib exit 1               # [win]
+    - if not exist %LIBRARY_INC%/coin/CglAllDifferent.hpp exit 1 # [win]
 
 about:
   home: https://projects.coin-or.org/Cgl
