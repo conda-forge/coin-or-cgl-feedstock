@@ -15,6 +15,8 @@ if [[ "${target_platform}" == win-* ]]; then
   OSI_INC=( --with-osi-incdir='${LIBRARY_PREFIX_COIN}' )
   CLP_LIB=( --with-clp-lib='${LIBRARY_PREFIX}/lib/libClp.lib' )
   CLP_INC=( --with-clp-incdir='${LIBRARY_PREFIX_COIN}' )
+  OSICLP_LIB=( --with-osiclp-lib='${LIBRARY_PREFIX}/lib/libOsiClp.lib' )
+  OSICLP_INC=( --with-osiclp-incdir='${LIBRARY_PREFIX_COIN}' )
   EXTRA_FLAGS=( --enable-msvc ) 
 else
   # Get an updated config.sub and config.guess (for mac arm and lnx aarch64)
@@ -26,6 +28,8 @@ else
   OSI_INC=()
   CLP_LIB=()
   CLP_INC=()
+  OSICLP_LIB=()
+  OSICLP_INC=()
   EXTRA_FLAGS=()
 fi
 
@@ -38,6 +42,8 @@ fi
   "${OSI_INC[@]}" \
   "${CLP_LIB[@]}" \
   "${CLP_INC[@]}" \
+  "${OSICLP_LIB[@]}" \
+  "${OSICLP_INC[@]}" \
   "${EXTRA_FLAGS[@]}" || cat Cgl/config.log
 
 make -j "${CPU_COUNT}"
