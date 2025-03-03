@@ -33,9 +33,7 @@ else
   EXTRA_FLAGS=()
 fi
 
-shopt -s expand_aliases
-
-alias xargs='env -i xargs'
+export PATH=$PWD:$PATH
 
 ./configure \
   --prefix="${USE_PREFIX}" \
