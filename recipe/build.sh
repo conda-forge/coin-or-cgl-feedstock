@@ -33,6 +33,8 @@ else
   EXTRA_FLAGS=()
 fi
 
+env
+
 ./configure \
   --prefix="${USE_PREFIX}" \
   --exec-prefix="${USE_PREFIX}" \
