@@ -33,7 +33,7 @@ else
   EXTRA_FLAGS=()
 fi
 
-env
+alias xargs='env -i xargs'
 
 ./configure \
   --prefix="${USE_PREFIX}" \
