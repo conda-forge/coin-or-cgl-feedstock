@@ -13,10 +13,9 @@ source:
     - patches/0002-Patch-for-downstream.patch
 
 build:
-  number: 4
+  number: 5
   run_exports:
     - {{ pin_subpackage(name, min_pin='x.x', max_pin='x.x') }}
-    - mkl-static  # [win]
 
 requirements:
   build:
@@ -40,11 +39,10 @@ requirements:
     - coin-or-osi
     - coin-or-clp
     - blas-devel
-    - libblas  # [unix]
+    - libblas
     - libcblas
     - liblapack
-    - liblapacke  # [unix]
-    - mkl-static  # [win]
+    - liblapacke
     - zlib
     - bzip2
   run_constrained:
@@ -56,6 +54,9 @@ test:
     - test -f $PREFIX/include/coin/CglAllDifferent.hpp  # [unix]
     - if not exist %LIBRARY_LIB%/libCgl.lib exit 1  # [win]
     - if not exist %LIBRARY_INC%/coin/CglAllDifferent.hpp exit 1  # [win]
+    - strings %LIBRARY_LIB%\\libCgl.lib | findstr /C:"RuntimeLibrary=MD"  # [win]
+  requires:
+    - binutils  # [win]
 
 about:
   home: https://projects.coin-or.org/Cgl
