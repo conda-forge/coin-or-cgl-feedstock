@@ -38,12 +38,6 @@ requirements:
     - coin-or-utils
     - coin-or-osi
     - coin-or-clp
-    - blas-devel
-    - libblas  # [unix]
-    - libcblas
-    - liblapack
-    - liblapacke  # [unix]
-    - mkl-devel  # [win]
     - zlib
     - bzip2
   run_constrained:
