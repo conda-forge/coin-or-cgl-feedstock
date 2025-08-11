@@ -13,7 +13,7 @@ source:
     - patches/0002-Patch-for-downstream.patch
 
 build:
-  number: 6
+  number: 7
   run_exports:
     - {{ pin_subpackage(name, min_pin='x.x', max_pin='x.x') }}
 
@@ -23,7 +23,6 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('fortran') }}  # [unix]
     - pkg-config  # [unix]
     - make  # [unix]
     - m2-make  # [win]
@@ -38,14 +37,7 @@ requirements:
     - coin-or-utils
     - coin-or-osi
     - coin-or-clp
-    - blas-devel
-    - libblas  # [unix]
-    - libcblas
-    - liblapack
-    - liblapacke  # [unix]
     - mkl-devel  # [win]
-    - zlib
-    - bzip2
   run_constrained:
     - coincbc * *_metapackage
 
