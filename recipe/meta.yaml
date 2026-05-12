@@ -1,8 +1,7 @@
-{% set name = "coin-or-cgl" %}
 {% set version = "0.60.10" %}
 
 package:
-  name: {{ name|lower }}
+  name: coin-or-cgl
   version: {{ version }}
 
 source:
@@ -13,9 +12,9 @@ source:
     - patches/0002-Patch-for-downstream.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
-    - {{ pin_subpackage(name, min_pin='x.x', max_pin='x.x') }}
+    - {{ pin_subpackage("coin-or-cgl", min_pin='x.x', max_pin='x.x') }}
 
 requirements:
   build:
